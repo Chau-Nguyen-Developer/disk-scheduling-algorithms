@@ -1,6 +1,7 @@
 //Programmer: Chau Nguyen
 
 #include <iostream>
+#include <random>
 
 const int NUMBER_OF_CYLINDERS = 5000;
 const int NUMBER_OF_REQUESTS = 1000;
@@ -9,9 +10,21 @@ int main()
 {
     //Create a random generator. This is pseudo random, not completely random, by the way.
     //Use current time as seed
-    srand(time(NULL));
-    int num = rand() % ;
-    std::cout << num;
+    // srand(time(NULL));
+    std::default_random_engine generator;
+    std::uniform_int_distribution<int> distribution(0, NUMBER_OF_CYLINDERS - 1);
+    
+    //An array to contain the cylinder request
+    int cylinderRequests[NUMBER_OF_REQUESTS];
+
+    //Generate a random series of 1,000 cylinder requests
+    for (int i = 0; i < NUMBER_OF_REQUESTS; ++i)
+    {
+        cylinderRequests[i] = distribution(generator);
+    } 
+    
+    //test
+    std::cout << cylinderRequests[24];
 
     return 0;
 
