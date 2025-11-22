@@ -1,13 +1,10 @@
 //Programmer: Chau Nguyen
 
 #include "constants.h"
+#include "algorithms.cpp"
 #include <iostream>
 #include <random>
 #include <array>
-
-
-const size_t NUMBER_OF_CYLINDERS = 5000;
-const size_t NUMBER_OF_REQUESTS = 1000;
 
 int main()
 {
@@ -35,6 +32,9 @@ int main()
     // std::cin >> head;
 
     //Calculate head movements ()
+    std::cout <<"Testing connecting other separate cpp files: ";
+    std::cout << FCFS(0, cylinderRequests) <<std::endl;
+
     return 0;
 
 }
