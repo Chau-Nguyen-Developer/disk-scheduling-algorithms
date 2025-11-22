@@ -27,13 +27,14 @@ int main()
     std::cout << cylinderRequests[999] << " " << cylinderRequests[0] << std::endl;
 
     //Prompt user for the head location
-    // int head = 0;
-    // std::cout << "Which cylinder is the head currently at? " << std::endl;
-    // std::cin >> head;
+    int head = 0;
+    std::cout << "Which cylinder is the head currently at? " << std::endl;
+    std::cin >> head;
 
     //Calculate head movements ()
-    std::cout <<"Testing connecting other separate cpp files: ";
-    std::cout << FCFS(0, cylinderRequests) <<std::endl;
+
+    //FCFS
+    std::cout << "Running First-Come-First-Served Algorithm...\n" << "Head Movement: " << FCFS(head, cylinderRequests) << std::endl;
 
     return 0;
 
