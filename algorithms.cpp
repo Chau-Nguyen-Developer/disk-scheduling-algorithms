@@ -1,59 +1,66 @@
 //Programmer: Chau Nguyen
 
 #include <iostream>
-#include <array>
+#include <vector>
 #include <cmath>
 #include <algorithm>
 #include "constants.h"
 
 
-int FCFS(int head, const std::vector<int>& vector)
+int FCFS(int head, const std::vector<int>& myVector)
 {
-    int headMovement = std::abs(vector[0] - head);
-
-    for (size_t i = 1; i < NUMBER_OF_REQUESTS; ++i)
+    if (myVector.empty())
     {
-        headMovement += std::abs(vector[i] - vector[i-1]); 
+        return 0;
     }
 
-    return headMovement;
-} 
+    int headMovement = std::abs(myVector[0] - head);
+    int len = myVector.size();
 
-int SSTF(int head, std::vector<int> vector)
-{
-    int result = 0;
-    //Find the next location that is closet to head
-    size_t i = 0;
-
-    while(i < NUMBER_OF_REQUESTS)
-    {
-        int current = vector[0];
-        int oldMinDistance = std::abs(current - head);
-        int newMinDistance = 0;
-        size_t nextIndex = 0;
-        bool justDeleted = false;
-        for (size_t j = 0; j< NUMBER_OF_REQUESTS; ++j)
+    for (size_t i = 1; i < len; ++i)
         {
-            newMinDistance = std::min(oldMinDistance, std::abs(vector[j] - head));
-            if(newMinDistance != oldMinDistance)
-            {
-                //Obtain the next location
-                nextIndex = j;
-            }
+            headMovement += std::abs(myVector[i] - myVector[i-1]); 
         }
-        result += newMinDistance;
-        //Obtain new head value
-        head = vector[nextIndex];
-        //Delete that entry, so that we don't duplicate calculating it. 
-        vector.erase(vector.begin() + nextIndex);
+
+    return headMovement;
+}
+
+
+// int SSTF(int head, std::vector<int> vector)
+// {
+//     int result = 0;
+//     //Find the next location that is closet to head
+//     size_t i = 0;
+
+//     while(i < NUMBER_OF_REQUESTS)
+//     {
+//         int current = vector[0];
+//         int oldMinDistance = std::abs(current - head);
+//         int newMinDistance = 0;
+//         size_t nextIndex = 0;
+//         bool justDeleted = false;
+//         for (size_t j = 0; j< NUMBER_OF_REQUESTS; ++j)
+//         {
+//             newMinDistance = std::min(oldMinDistance, std::abs(vector[j] - head));
+//             if(newMinDistance != oldMinDistance)
+//             {
+//                 //Obtain the next location
+//                 nextIndex = j;
+//             }
+//         }
+//         result += newMinDistance;
+//         //Obtain new head value
+//         head = vector[nextIndex];
+//         //Delete that entry, so that we don't duplicate calculating it. 
+//         vector.erase(vector.begin() + nextIndex);
 
         
-        //Remove the element at that index
+//         //Remove the element at that index
 
-        //may not increment i. may done = true when delete all elements in vector. 
+//         //may not increment i. may done = true when delete all elements in vector. 
 
-        ++i;
-    } 
+//         ++i;
+//     } 
 
-    return 0;
-}
+//     return 0;
+//}

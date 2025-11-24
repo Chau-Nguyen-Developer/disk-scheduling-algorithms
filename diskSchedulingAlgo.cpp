@@ -26,7 +26,7 @@ int main()
     } 
     
     //test
-    std::cout << cylinderRequests[999] << " " << cylinderRequests[0] << std::endl;
+    //std::cout << cylinderRequests[999] << " " << cylinderRequests[0] << std::endl;
 
     //Prompt user for the head location
     int head = 0;
