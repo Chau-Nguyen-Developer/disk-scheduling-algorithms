@@ -14,10 +14,7 @@ int main()
     std::default_random_engine generator;
     std::uniform_int_distribution<int> distribution(0, NUMBER_OF_CYLINDERS - 1);
     
-    //An array to contain the cylinder request
-    // int cylinderRequests[NUMBER_OF_REQUESTS]; <-- old style C
-
-    std::vector<int> cylinderRequests;
+    std::vector<int> cylinderRequests(NUMBER_OF_REQUESTS);
 
     //Generate a random series of 1,000 cylinder requests
     for (size_t i = 0; i < NUMBER_OF_REQUESTS; ++i)

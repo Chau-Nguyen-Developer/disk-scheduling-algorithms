@@ -9,19 +9,27 @@
 
 int FCFS(int head, const std::vector<int>& myVector)
 {
+    //If the segment faults happen before any of these lines, that tells us the vector reference itself is
+    //invalid
+    std::cout << "FCFS is being called. Head = " << head << 
+    ", size = " << myVector.size() << "\n";
+
+    int headMovement = 0;
     if (myVector.empty())
     {
+        std::cout << "Vector is empty. Return 0\n";
         return 0;
     }
 
-    int headMovement = std::abs(myVector[0] - head);
+    headMovement = std::abs(myVector[0] - head);
     int len = myVector.size();
 
     for (size_t i = 1; i < len; ++i)
-        {
-            headMovement += std::abs(myVector[i] - myVector[i-1]); 
-        }
-
+    {
+        headMovement += std::abs(myVector[i] - myVector[i-1]); 
+    }
+   
+    
     return headMovement;
 }
 
