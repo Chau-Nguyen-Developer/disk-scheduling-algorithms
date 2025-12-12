@@ -25,16 +25,26 @@ int main()
     //test
     //std::cout << cylinderRequests[999] << " " << cylinderRequests[0] << std::endl;
 
+    //Print out the content of the vector
+    for(auto number: cylinderRequests)
+    {
+        std::cout << number << " ";
+    }
+    std::cout << std::endl;
+
     //Prompt user for the head location
     int head = 0;
-    std::cout << "Which cylinder is the head currently at? " << std::endl;
+    std::cout << "Which cylinder is the head currently at? ";
     std::cin >> head;
 
     //Calculate head movements ()
 
-    //FCFS
-    std::cout << "Running First-Come-First-Served Algorithm...\n" << "Head Movement: " << FCFS(head, cylinderRequests) << std::endl;
+    //FCFS - First Come First Served
+    std::cout << "Running First-Come-First-Served Algorithm...\n" << FCFS(head, cylinderRequests) << std::endl;
 
+    //SSTF - Shortest Seek Time First
+    std::cout << "Running Shortest-Seek-Time-First Algorithm...\n" << SSTF(head, cylinderRequests) << std::endl;
+    
     return 0;
 
 }
