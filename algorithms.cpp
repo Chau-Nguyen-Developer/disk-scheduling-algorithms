@@ -6,6 +6,14 @@
 #include <algorithm>
 #include "constants.h"
 
+void printVector(const std::vector<int>& myVector)
+{
+    for(size_t element: myVector)
+    {
+        std::cout << element << " ";
+    }
+    std::cout << std::endl;
+}
 
 int FCFS(int head, const std::vector<int>& myVector)
 {
@@ -82,54 +90,53 @@ int SSTF(int head, std::vector<int>& myVector)
 {
     int result = 0;
     //Take head and subtract head to every element to identify which element yields the minimum distance
-    int min = std::abs(head - myVector[0]);
+    int min;
     int nextIndex = 0;
     int temp;
-   
 
-    //This is the for loop to indentify which element yields the minimum distance from current head
-    for(size_t i = 1; i < myVector.size(); ++i)
+    int count = 0; 
+    while(count < NUMBER_OF_REQUESTS)
     {
-        temp = std::abs(myVector[i] - head);
-        if(temp < min)
-        {
-            min = temp;
-            nextIndex = i;
-        }
-    }
+        std::cout <<"\nCount: " << count << std::endl;
+        std::cout << "Current head: " << head << std::endl;
 
-    //Now, we got the element and the index that yiels the minimum distance with head
-    result += min;
-    head = myVector[nextIndex];
-
-    //After asigning the value at "nextIndex" to head, delete that element so we don't recalculate it. 
-    std::swap(myVector[nextIndex], myVector.back());
-    myVector.pop_back();
-
-    //Now, do the for loop again
-
-
-    for(size_t i = 1; i < myVector.size(); ++i)
-    {
-        if(myVector.empty())
-        {
-            break;
-        }
-
-        //Take head and subtract head to every element to identify which element yields the minimum distance
-       
-        temp = std::abs(head - myVector[i]);
-        if(temp < min)
-        {
-            min = temp;
-            nextIndex = i;
-        }
-
-        result += min;
-        //Update head
-
-        //Remove that element
-
+        //Temporarily calculate "min". Will replace min with real minimum later after comparing "temporary" value to current min.
         min = std::abs(head - myVector[0]);
+        //nextIndex = 0;
+        std::cout << "myVector[0]: " << myVector[0] <<std::endl;
+        std::cout << "Temporary min: "<< min << std::endl;
+        std::cout <<"Head: " << head << ". At index " << 0 << ". Temp value " << head << " - " << myVector[0] << ": " << min <<std::endl;
+
+        //This is the for loop to indentify which element yields the minimum distance from current head
+        for(size_t i = 1; i < myVector.size(); ++i)
+        {
+            temp = std::abs(head - myVector[i]);
+            std::cout <<"Head: " << head << ". At index " << i << ". Temp value " << head << " - " << myVector[i] << ": " << temp <<std::endl;
+
+            if(temp < min)
+            {
+                min = temp;
+                nextIndex = i;
+            }
+        }
+
+        //Now, we got the element and the index that yiels the minimum distance with head
+        std::cout << "Next request: " << myVector[nextIndex] << ". With distance: " << min << std::endl;
+        result += min;
+        std::cout << "Total head movements so far: " << result << std::endl;
+        //Update head
+        head = myVector[nextIndex];
+        std::cout << "Head moves to this new position: " << head << std::endl;
+
+        //After asigning the value at "nextIndex" to head, delete that element so we don't recalculate it. 
+        std::swap(myVector[nextIndex], myVector.back());
+        myVector.pop_back();
+        printVector(myVector);
+
+        //Now, do the for loop again
+        ++count;
     }
+
+    return result;
 }
+
