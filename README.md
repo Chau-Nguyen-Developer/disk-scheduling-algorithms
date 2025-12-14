@@ -22,7 +22,7 @@ This program will service a disk with 5,000 cylinders (numbered from 0 to 4,999)
 2. You will feed in an `input.txt` file where you can control what the order of cylinder requests looks like. The program will service them according to the two algorithms listed above. 
 
 ## Current Work  
-Able to return the number of head movements for both algorithms correctly. Will work on the number of changes in direction in the future.  
+I used vector as data structure for both algorithms. Able to return the number of head movements for both algorithms correctly. Will work on the number of changes in direction in the future.  
 
 ## Reference  
 Good post talking about different hard-disk algorithms: https://pieces.app/blog/intro-to-disk-scheduling-algorithms  
